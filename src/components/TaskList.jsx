@@ -16,7 +16,7 @@ const TaskList = () => {
   return (
     <div className='w-4/6'>
       <header className='flex justify-between items-center py-5'>
-        <h1># Task: {tasks.length}</h1>
+        <h1>#Task: {tasks.length}</h1>
         <Link to='/create-task' className='bg-indigo-700 px-2 py-1 text-sm rounded-xl'>
           Create Task
         </Link>
