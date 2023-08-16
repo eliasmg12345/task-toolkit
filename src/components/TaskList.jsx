@@ -14,21 +14,33 @@ const TaskList = () => {
   }
 
   return (
-    <div>
-      <header>
-        <h1>Task {tasks.length}</h1>
-        <Link to='/create-task'>
+    <div className='w-4/6'>
+      <header className='flex justify-between items-center py-5'>
+        <h1># Task: {tasks.length}</h1>
+        <Link to='/create-task' className='bg-indigo-600 px-2 py-1 text-sm rounded-xl'>
           Create Task
         </Link>
       </header>
-      {tasks.map(task => (
-        <div key={task.id}>
-          <h3>{task.title}</h3>
-          <p>{task.description}</p>
-          <button onClick={() => { handleDelete(task.id) }}>Delete</button>
-          <Link to={`/edit-task/${task.id}`} >Edit</Link>
-        </div>
-      ))}
+      <div className='grid grid-cols-3 gap-4'>
+        {tasks.map(task => (
+          <div key={task.id} className="bg-neutral-700 p-4 rounded-md">
+            <header className='flex justify-between'>
+              <h3>{task.title}</h3>
+              <div className='flex gap-x-1'>
+                <Link
+                  to={`/edit-task/${task.id}`}
+                  className="bg-zinc-600 px-2 py-1 text-xs rounded-md"
+                >Edit</Link>
+                <button
+                  onClick={() => { handleDelete(task.id) }}
+                  className="bg-red-600 px-2 py-1 text-xs rounded-md"
+                >Delete</button>
+              </div>
+            </header>
+            <p>{task.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
